@@ -34,21 +34,21 @@ GLOBAL_SEED = 1234
 def parse_args():
     parser = ArgumentParser(description='Efficient semantic segmentation')
     # model and dataset
-    parser.add_argument('--model', type=str, default="ENet", help="model name: (default ENet)")
-    parser.add_argument('--dataset', type=str, default="camvid", help="dataset: cityscapes or camvid")
-    parser.add_argument('--input_size', type=str, default="360,480", help="input size of model")
+    parser.add_argument('--model', type=str, default="GBFFNet", help="model name: (default ENet)")
+    parser.add_argument('--dataset', type=str, default="cityscapes", help="dataset: cityscapes or camvid")
+    parser.add_argument('--input_size', type=str, default="1024,1024", help="input size of model")
     parser.add_argument('--num_workers', type=int, default=4, help=" the number of parallel threads")
-    parser.add_argument('--classes', type=int, default=11,
+    parser.add_argument('--classes', type=int, default=19,
                         help="the number of classes in the dataset. 19 and 11 for cityscapes and camvid, respectively")
     parser.add_argument('--train_type', type=str, default="trainval",
                         help="ontrain for training on train set, ontrainval for training on train+val set")
     # training hyper params
-    parser.add_argument('--max_epochs', type=int, default=1000,
+    parser.add_argument('--max_epochs', type=int, default=484,
                         help="the number of epochs: 300 for train set, 350 for train+val set")
     parser.add_argument('--random_mirror', type=bool, default=True, help="input image random mirror")
     parser.add_argument('--random_scale', type=bool, default=True, help="input image resize 0.5 to 2")
     parser.add_argument('--lr', type=float, default=5e-4, help="initial learning rate")
-    parser.add_argument('--batch_size', type=int, default=8, help="the batch size is set to 16 for 2 GPUs")
+    parser.add_argument('--batch_size', type=int, default=12, help="the batch size is set to 16 for 2 GPUs")
     parser.add_argument('--optim',type=str.lower,default='adam',choices=['sgd','adam','radam','ranger'],help="select optimizer")
     parser.add_argument('--lr_schedule', type=str, default='warmpoly', help='name of lr schedule: poly')
     parser.add_argument('--num_cycles', type=int, default=1, help='Cosine Annealing Cyclic LR')
@@ -385,11 +385,11 @@ if __name__ == '__main__':
 
     if args.dataset == 'cityscapes':
         args.classes = 19
-        args.input_size = '512,1024'
+        args.input_size = '1024,1024'
         ignore_label = 255
     elif args.dataset == 'camvid':
         args.classes = 11
-        args.input_size = '360,480'
+        args.input_size = '720,960'
         ignore_label = 11
     else:
         raise NotImplementedError(
