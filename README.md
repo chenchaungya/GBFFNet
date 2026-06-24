@@ -1,5 +1,5 @@
 # GBFFNet
-This repository is an official PyTorch implementation of our paper " A guided bilateral feature fusion network for real-time semantic segmentation". 
+This repository is an official PyTorch implementation of our paper " GBFFNet:a guided bilateral feature fusion network for real-time semantic segmentation". 
 
 ## Installation
 
