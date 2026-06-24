@@ -67,9 +67,9 @@ python predict.py --dataset cityscapes
 
 |  Methods  | pre-trained | Input Size | mIoU(%) |  FPS  |
 | :-------: | :---------: | :--------: | :-----: | :---: |
-| DBBGNet-R18 |     yes     |  960x720   |  78.2   | 122.4 |
-| DBBGNet-T |     yes     |  960x720   |  77.4   | 179.6 |
-| DBBGNet-B |     yes     |  960x720   |  78.9   | 142.1 |
+| GBFFNet-R18 |     yes     |  960x720   |  78.2   | 122.4 |
+| GBFFNet-T |     yes     |  960x720   |  77.4   | 179.6 |
+| GBFFNet-B |     yes     |  960x720   |  78.9   | 142.1 |
 
 
 
